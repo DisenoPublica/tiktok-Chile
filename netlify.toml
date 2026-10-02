@@ -1,0 +1,16 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/datos"
+  to = "/Estadisticas.dc.html"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/Visor%20PDF.dc.html"
+  status = 200
