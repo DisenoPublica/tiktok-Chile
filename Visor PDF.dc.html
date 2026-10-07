@@ -24,7 +24,7 @@ a{color:#1F1E1C;}a:hover{color:#55524C;}
       </sc-if>
       <div style="flex:1;min-width:160px;display:flex;flex-direction:column;gap:2px;">
       </div>
-      <a href="{{ pdfUrl }}" download="{{ fileName }}" onClick="{{ onDownload }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:8px;background:#FE2C55;color:#FFFFFF;font-size:14px;font-weight:600;text-decoration:none;" style-hover="background:#E0204A;color:#FFFFFF;">
+      <a href="{{ downloadUrl }}" download="{{ fileName }}" onClick="{{ onDownload }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:8px;background:#FE2C55;color:#FFFFFF;font-size:14px;font-weight:600;text-decoration:none;" style-hover="background:#E0204A;color:#FFFFFF;">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg>
         Descargar PDF
       </a>
@@ -44,11 +44,11 @@ a{color:#1F1E1C;}a:hover{color:#55524C;}
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;logoUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;logo-tiktok.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;pdfUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;guia-bienestar-digital.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Documento&quot;},&quot;fileName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Guia-de-bienestar-digital.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Documento&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;logoUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;logo-tiktok.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;pdfUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Guia-TikTok.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Documento&quot;},&quot;fileName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Guia-TikTok.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Documento&quot;}}">
 class Component extends DCLogic {
   state = { pages: 0, loading: true, error: false };
   pagesRef = React.createRef();
-  pdf() { return this.props.pdfUrl || 'guia-bienestar-digital.pdf'; }
+  pdf() { return this.props.pdfUrl || 'Guia-TikTok.pdf'; }
   componentDidMount() { this.track('vista'); this.load(); }
   track(ev) {
     const fn = { vista: 'track-view', descarga: 'track-download' }[ev];
@@ -87,7 +87,8 @@ class Component extends DCLogic {
     const n = this.state.pages;
     return {
       pdfUrl: this.pdf(),
-      fileName: this.props.fileName || 'Guia-de-bienestar-digital.pdf',
+      downloadUrl: '/Guia-TikTok.pdf',
+      fileName: this.props.fileName || 'Guia-TikTok.pdf',
       hasLogo: !!logo, noLogo: !logo,
       logoEl: logo ? React.createElement('img', { src: logo, alt: 'Logo', style: { height: 32, width: 'auto', display: 'block' } }) : null,
       pagesLabel: n ? n + ' páginas' : 'PDF',

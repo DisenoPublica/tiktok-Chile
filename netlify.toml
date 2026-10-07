@@ -5,6 +5,11 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+[[headers]]
+  for = "/Guia-TikTok.pdf"
+  [headers.values]
+    Content-Disposition = "attachment; filename=\"Guia-TikTok.pdf\""
+
 [[redirects]]
   from = "/datos"
   to = "/Estadisticas.dc.html"

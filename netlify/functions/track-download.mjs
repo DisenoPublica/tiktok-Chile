@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
 
 export default async () => {
-  const store = getStore({ name: "pdf-stats-chile", consistency: "strong" });
+  const store = getStore({ name: "pdf-stats", consistency: "strong" });
   for (let i = 0; i < 5; i++) {
     const cur = await store.getWithMetadata("downloads", { type: "json" });
     const next = (Number(cur?.data) || 0) + 1;
